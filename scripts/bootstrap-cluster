@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#
+# Bootstraps Flux and Helm operator on a Kubernetes cluster.
+
+set -e
+
+GIT_ROOT_DIR="$(git rev-parse --show-toplevel)"
+
+# Deploy Argo CD to the cluster.
+kubectl create ns argocd
+kubectl apply -n argocd -f "${GIT_ROOT_DIR}/base/argo-cd"
