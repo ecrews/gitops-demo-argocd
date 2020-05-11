@@ -17,6 +17,12 @@ kubectl -n argocd rollout status deployment/argocd-server
 kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
 hostname="$(kubectl get svc -n argocd argocd-server -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')"
 
+while [[ -z "${hostname}" ]]; do
+echo "Ensuring load balancer..."
+hostname="$(kubectl get svc -n argocd argocd-server -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')"
+sleep 5
+done
+
 # Login using the CLI.
 password="$(kubectl get pods -n argocd -l app.kubernetes.io/name=argocd-server -o name | cut -d'/' -f 2)"
 argocd login "${hostname}" --insecure --username admin --password "${password}"
