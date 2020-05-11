@@ -21,8 +21,8 @@ spec:
             kubernetes.io/ingress.class: alb
             alb.ingress.kubernetes.io/scheme: internet-facing
           enabled: true
-      service:
-        type: NodePort
+        service:
+          type: NodePort
   syncPolicy:
     automated:
       prune: true
