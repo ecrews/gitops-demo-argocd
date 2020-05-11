@@ -15,9 +15,9 @@ spec:
     repoURL: https://kubernetes-charts.storage.googleapis.com/
     targetRevision: 2.8.6
     helm:
-      parameters:
-      - name: args
-        value: "--kubelet-preferred-address-types=InternalIP"
+      values: |
+        args:
+          - --kubelet-preferred-address-types=InternalIP
   syncPolicy:
     automated:
       prune: true
