@@ -14,10 +14,6 @@ spec:
     path: charts/podinfo
     repoURL: https://github.com/stefanprodan/podinfo
     targetRevision: v3.x
-    helm:
-      parameters:
-      - name: faults.error
-        value: "true"
   syncPolicy:
     automated:
       prune: true
