@@ -14,6 +14,15 @@ spec:
     path: charts/podinfo
     repoURL: https://github.com/stefanprodan/podinfo
     targetRevision: v3.x
+    helm:
+      values: |
+        ingress:
+          annotations: 
+            kubernetes.io/ingress.class: alb
+            alb.ingress.kubernetes.io/scheme: internet-facing
+          enabled: true
+      service:
+        type: NodePort
   syncPolicy:
     automated:
       prune: true
