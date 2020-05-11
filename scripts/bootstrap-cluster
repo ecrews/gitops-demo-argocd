@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Bootstraps Flux and Helm operator on a Kubernetes cluster.
+# Bootstraps Argo CD on a Kubernetes cluster.
 
 set -e
 
