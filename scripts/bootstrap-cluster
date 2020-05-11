@@ -9,3 +9,26 @@ GIT_ROOT_DIR="$(git rev-parse --show-toplevel)"
 # Deploy Argo CD to the cluster.
 kubectl create ns argocd
 kubectl apply -n argocd -f "${GIT_ROOT_DIR}/base/argo-cd"
+
+# Wait for Argo CD to start.
+kubectl -n argocd rollout status deployment/argocd-server
+
+# Port-forward to Argo CD Server.
+kubectl port-forward svc/argocd-server -n argocd 8080:443 &
+
+# Login using the CLI.
+password="$(kubectl get pods -n argocd -l app.kubernetes.io/name=argocd-server -o name | cut -d'/' -f 2)"
+argocd login localhost:8080 --name admin --password "${password}"
+
+# Add credentials for the private repository.
+personal_access_token="$(cat ${HOME}/personal_access_token)"
+argocd repo add https://github.com/ecrews/gitops-demo-argocd --username ecrews --password "${personal_access_token}"
+
+# Create and sync parent app.
+argocd app create apps \
+    --dest-namespace argocd \
+    --dest-server https://kubernetes.default.svc \
+    --repo https://github.com/ecrews/gitops-demo-argocd.git \
+    --path charts/apps
+
+argocd app sync apps
