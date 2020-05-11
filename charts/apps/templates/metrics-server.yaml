@@ -17,7 +17,7 @@ spec:
     helm:
       parameters:
       - name: args
-        value: [--kubelet-preferred-address-types=InternalIP]
+        value: "--kubelet-preferred-address-types=InternalIP"
   syncPolicy:
     automated:
       prune: true
