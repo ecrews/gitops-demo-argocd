@@ -12,8 +12,8 @@ spec:
   project: default
   source:
     path: charts/podinfo
-    repoURL: https://github.com/stefanprodan/podinfo
-    targetRevision: v3.x
+    repoURL: https://github.com/ecrews/gitops-demo-argocd
+    targetRevision: HEAD
     helm:
       values: |
         ingress:
