@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     path: charts/podinfo
-    repoURL: https://github.com/ecrews/gitops-demo-argocd
+    repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: HEAD
     helm:
       values: |
@@ -23,6 +23,8 @@ spec:
           enabled: true
         service:
           type: NodePort
+        ui:
+          message: "Hello, ITHAKA"
   syncPolicy:
     automated:
       prune: true
