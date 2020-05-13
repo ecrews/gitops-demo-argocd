@@ -16,7 +16,7 @@ spec:
     targetRevision: HEAD
     helm:
       parameters:
-      - name: "ingress.annotations.kubernetes\\.io/ingress.class"
+      - name: "ingress.annotations.kubernetes\\.io/ingress\\.class"
         value: "alb"
       - name: "ingress.annotations.alb\\.ingress\\.kubernetes\\.io/scheme"
         value: "internet-facing"
