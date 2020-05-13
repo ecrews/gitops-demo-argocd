@@ -73,7 +73,7 @@ spec:
           {{- end }}
           {{- if .Values.ui.color }}
           - name: PODINFO_UI_COLOR
-            value: {{ .Values.ui.color }}
+            value: {{ .Values.ui.color | quote }}
           {{- end }}
           {{- if .Values.backend }}
           - name: PODINFO_BACKEND_URL
