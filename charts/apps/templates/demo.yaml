@@ -15,16 +15,15 @@ spec:
     repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: HEAD
     helm:
-      values: |
-        ingress:
-          annotations: 
-            kubernetes.io/ingress.class: alb
-            alb.ingress.kubernetes.io/scheme: internet-facing
-          enabled: true
-        service:
-          type: NodePort
-        ui:
-          message: "Hello, ITHAKA"
+      parameters:
+      - name: "ingress.annotations.kubernetes\\.io/ingress.class"
+        value: "alb"
+      - name: "ingress.annotations.alb\\.ingress\\.kubernetes\\.io/scheme"
+        value: "internet-facing"
+      - name: "ingress.enabled"
+        value: true
+      - name: "service.type"
+        value: "NodePort"
   syncPolicy:
     automated:
       prune: true
