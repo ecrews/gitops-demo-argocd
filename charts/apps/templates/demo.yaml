@@ -24,6 +24,8 @@ spec:
         value: "true"
       - name: "service.type"
         value: "NodePort"
+      - name: "ui.message"
+        value: "Hello, ITHAKA"
   syncPolicy:
     automated:
       prune: true
