@@ -1,0 +1,9 @@
+bases:
+- github.com/argoproj/argo-cd//manifests/cluster-install?ref=v1.6.0
+
+resources:
+- clusters-secrets.yaml
+
+patchesStrategicMerge:
+- argocd-server-deployment.yaml
+- argocd-server-sa.yaml

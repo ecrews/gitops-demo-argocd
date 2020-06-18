@@ -1,6 +1,0 @@
-spec:
-  destination:
-    server: https://kubernetes.default.svc
-  source:
-    repoURL: https://github.com/ecrews/gitops-demo-argocd
-    targetRevision: HEAD

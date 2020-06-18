@@ -1,6 +1,0 @@
-apiVersion: v2
-appVersion: 1.16.0
-description: A Helm chart for AWS ALB Ingress Controller
-name: alb-ingress-controller
-type: application
-version: 0.1.0
